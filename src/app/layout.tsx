@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+// @ts-expect-error - Next.js handles CSS imports
 import "./globals.css";
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
 
