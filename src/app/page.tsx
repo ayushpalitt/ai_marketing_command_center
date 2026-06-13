@@ -18,7 +18,7 @@ export default async function Home() {
           <Activity className="h-10 w-10 text-primary" />
         </div>
         <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400">
-          AI Marketing Command Center
+          NEXUS ANALYTICS
         </h1>
         <p className="text-xl text-slate-400 max-w-2xl">
           The ultimate enterprise intelligence platform. Unite your campaigns, analyze traffic, simulate outcomes, and leverage AI to drive ROI.

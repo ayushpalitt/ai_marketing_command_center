@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 import { ClerkProvider } from '@clerk/nextjs'
 
 export const metadata: Metadata = {
-  title: "AI Marketing Command Center",
+  title: "NEXUS ANALYTICS",
   description: "Enterprise SaaS platform for marketing analytics and intelligence",
 };
 
