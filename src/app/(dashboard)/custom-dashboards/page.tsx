@@ -20,11 +20,11 @@ export default function CustomDashboardsPage() {
           <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
             <LayoutTemplate className="h-8 w-8 text-primary" /> Saved Dashboards
           </h1>
-          <p className="text-sm text-slate-400 mt-1">Manage, build, and share your custom analytics views.</p>
+          <p className="text-sm text-slate-500 mt-1">Manage, build, and share your custom analytics views.</p>
         </div>
         <div className="mt-4 flex space-x-3 sm:mt-0">
           <button 
-            className="flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+            className="flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-slate-900 hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
             onClick={() => router.push('/dashboard')}
           >
             <Plus className="mr-2 h-4 w-4" /> Create New Dashboard
@@ -37,23 +37,23 @@ export default function CustomDashboardsPage() {
           <div 
             key={dashboard.id} 
             onClick={() => router.push('/dashboard')}
-            className="group rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-md hover:border-primary/50 transition-colors relative overflow-hidden flex flex-col h-full cursor-pointer"
+            className="group rounded-xl border border-slate-200 bg-white shadow-sm p-6  hover:border-primary/50 transition-colors relative overflow-hidden flex flex-col h-full cursor-pointer"
           >
             <div className="flex items-start justify-between mb-4">
               <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${dashboard.bg}`}>
                 <dashboard.icon className={`h-6 w-6 ${dashboard.color}`} />
               </div>
-              <button className="text-slate-400 hover:text-white p-1 rounded-md hover:bg-white/10 transition-colors">
+              <button className="text-slate-500 hover:text-slate-900 p-1 rounded-md hover:bg-white/10 transition-colors">
                 <MoreVertical className="h-5 w-5" />
               </button>
             </div>
             
             <div className="flex-1">
-              <h3 className="text-lg font-semibold text-white group-hover:text-primary transition-colors">{dashboard.name}</h3>
-              <p className="mt-2 text-sm text-slate-400 line-clamp-2">{dashboard.description}</p>
+              <h3 className="text-lg font-semibold text-slate-900 group-hover:text-primary transition-colors">{dashboard.name}</h3>
+              <p className="mt-2 text-sm text-slate-500 line-clamp-2">{dashboard.description}</p>
             </div>
             
-            <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-500">
+            <div className="mt-6 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
               <span className="flex items-center">
                 <LayoutDashboard className="h-3 w-3 mr-1" /> {dashboard.widgets} widgets
               </span>
@@ -68,13 +68,13 @@ export default function CustomDashboardsPage() {
         {/* Empty State / Create New Card */}
         <div 
           onClick={() => router.push('/dashboard')}
-          className="rounded-xl border border-dashed border-white/20 bg-transparent p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary/50 hover:bg-white/5 transition-colors min-h-[200px]"
+          className="rounded-xl border border-dashed border-white/20 bg-transparent p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary/50 hover:bg-white shadow-sm transition-colors min-h-[200px]"
         >
-          <div className="h-12 w-12 rounded-full bg-white/5 flex items-center justify-center mb-3 text-slate-400">
+          <div className="h-12 w-12 rounded-full bg-white shadow-sm flex items-center justify-center mb-3 text-slate-500">
             <Plus className="h-6 w-6" />
           </div>
-          <h3 className="text-base font-semibold text-white">Blank Canvas</h3>
-          <p className="mt-1 text-sm text-slate-400">Start from scratch with the drag-and-drop builder.</p>
+          <h3 className="text-base font-semibold text-slate-900">Blank Canvas</h3>
+          <p className="mt-1 text-sm text-slate-500">Start from scratch with the drag-and-drop builder.</p>
         </div>
       </div>
     </div>

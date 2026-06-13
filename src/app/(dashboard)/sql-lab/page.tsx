@@ -35,19 +35,19 @@ export default function SQLLabPage() {
           <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
             <Database className="h-8 w-8 text-primary" /> SQL Analytics Lab
           </h1>
-          <p className="text-sm text-slate-400 mt-1">Directly query your 100,000+ marketing data points.</p>
+          <p className="text-sm text-slate-500 mt-1">Directly query your 100,000+ marketing data points.</p>
         </div>
         <div className="mt-4 flex space-x-3 sm:mt-0">
-          <button className="flex items-center rounded-md border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium hover:bg-white/10 transition-colors">
+          <button className="flex items-center rounded-md border border-slate-200 bg-white shadow-sm px-4 py-2 text-sm font-medium hover:bg-white/10 transition-colors">
             <History className="mr-2 h-4 w-4" /> History
           </button>
-          <button className="flex items-center rounded-md border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium hover:bg-white/10 transition-colors">
+          <button className="flex items-center rounded-md border border-slate-200 bg-white shadow-sm px-4 py-2 text-sm font-medium hover:bg-white/10 transition-colors">
             <Save className="mr-2 h-4 w-4" /> Save Template
           </button>
           <button 
             onClick={handleRunQuery}
             disabled={isRunning}
-            className="flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90 transition-colors disabled:opacity-50"
+            className="flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-slate-900 hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
             <Play className={`mr-2 h-4 w-4 ${isRunning ? 'animate-pulse' : ''}`} /> 
             {isRunning ? 'Running...' : 'Run Query'}
@@ -57,8 +57,8 @@ export default function SQLLabPage() {
 
       <div className="grid gap-6 lg:grid-cols-4 flex-1 min-h-0">
         {/* Templates Sidebar */}
-        <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex flex-col">
-          <div className="p-4 border-b border-white/10 bg-[#0F172A]/50">
+        <div className="rounded-xl border border-slate-200 bg-white shadow-sm  overflow-hidden flex flex-col">
+          <div className="p-4 border-b border-slate-200 bg-white/50">
             <h3 className="font-semibold text-sm text-slate-300">Prebuilt Templates</h3>
           </div>
           <div className="flex-1 overflow-y-auto p-2 space-y-1">
@@ -66,7 +66,7 @@ export default function SQLLabPage() {
               <button 
                 key={idx}
                 onClick={() => setQuery(t.query)}
-                className="w-full text-left px-3 py-2 rounded-md text-sm text-slate-300 hover:bg-white/10 hover:text-white transition-colors flex items-center justify-between group"
+                className="w-full text-left px-3 py-2 rounded-md text-sm text-slate-300 hover:bg-white/10 hover:text-slate-900 transition-colors flex items-center justify-between group"
               >
                 {t.name}
                 <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -78,13 +78,13 @@ export default function SQLLabPage() {
         {/* Editor & Results Area */}
         <div className="lg:col-span-3 flex flex-col gap-6 min-h-0">
           {/* Query Editor */}
-          <div className="rounded-xl border border-white/10 bg-[#0A0F1C] overflow-hidden flex flex-col h-[250px] flex-shrink-0 relative">
-            <div className="absolute top-0 left-0 w-full h-8 bg-white/5 border-b border-white/10 flex items-center px-4">
+          <div className="rounded-xl border border-slate-200 bg-[#0A0F1C] overflow-hidden flex flex-col h-[250px] flex-shrink-0 relative">
+            <div className="absolute top-0 left-0 w-full h-8 bg-white shadow-sm border-b border-slate-200 flex items-center px-4">
               <Terminal className="h-4 w-4 text-slate-500 mr-2" />
-              <span className="text-xs font-mono text-slate-400">PostgreSQL (Read-Only)</span>
+              <span className="text-xs font-mono text-slate-500">PostgreSQL (Read-Only)</span>
             </div>
             <textarea
-              className="flex-1 w-full bg-transparent text-green-400 font-mono text-sm p-4 pt-12 focus:outline-none resize-none"
+              className="flex-1 w-full bg-transparent text-emerald-600 font-mono text-sm p-4 pt-12 focus:outline-none resize-none"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               spellCheck="false"
@@ -92,10 +92,10 @@ export default function SQLLabPage() {
           </div>
 
           {/* Results Table */}
-          <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex-1 overflow-hidden flex flex-col">
-            <div className="p-4 border-b border-white/10 flex justify-between items-center bg-[#0F172A]/50">
+          <div className="rounded-xl border border-slate-200 bg-white shadow-sm  flex-1 overflow-hidden flex flex-col">
+            <div className="p-4 border-b border-slate-200 flex justify-between items-center bg-white/50">
               <h3 className="font-semibold text-sm">Query Results</h3>
-              {results && <span className="text-xs text-slate-400">{results.length} rows returned in 800ms</span>}
+              {results && <span className="text-xs text-slate-500">{results.length} rows returned in 800ms</span>}
             </div>
             <div className="flex-1 overflow-auto p-0">
               {!results ? (
@@ -105,7 +105,7 @@ export default function SQLLabPage() {
                 </div>
               ) : (
                 <table className="w-full text-left text-sm text-slate-300 whitespace-nowrap">
-                  <thead className="bg-white/5 text-xs uppercase text-slate-400 border-b border-white/10 sticky top-0">
+                  <thead className="bg-white shadow-sm text-xs uppercase text-slate-500 border-b border-slate-200 sticky top-0">
                     <tr>
                       {Object.keys(results[0]).map(key => (
                         <th key={key} className="px-6 py-3 font-medium">{key}</th>
@@ -114,7 +114,7 @@ export default function SQLLabPage() {
                   </thead>
                   <tbody className="divide-y divide-white/5">
                     {results.map((row: any, i: number) => (
-                      <tr key={i} className="hover:bg-white/5 transition-colors">
+                      <tr key={i} className="hover:bg-white shadow-sm transition-colors">
                         {Object.values(row).map((val: any, j: number) => (
                           <td key={j} className="px-6 py-3 font-mono text-xs">{val}</td>
                         ))}

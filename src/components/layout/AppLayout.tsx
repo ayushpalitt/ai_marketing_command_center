@@ -4,7 +4,7 @@ import { Topbar } from "./Topbar"
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen w-full bg-[#0F172A] text-white overflow-hidden">
+    <div className="flex h-screen w-full bg-slate-50 text-slate-900 overflow-hidden">
       <Sidebar />
       <div className="flex flex-1 flex-col overflow-hidden">
         <Topbar />

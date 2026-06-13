@@ -23,12 +23,12 @@ export default function TrafficPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Traffic Analytics</h1>
-        <p className="text-sm text-slate-400 mt-1">Analyze your audience sources and landing page performance.</p>
+        <p className="text-sm text-slate-500 mt-1">Analyze your audience sources and landing page performance.</p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {/* Traffic Sources Pie Chart */}
-        <div className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-md xl:col-span-1">
+        <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6  xl:col-span-1">
           <h3 className="text-lg font-medium mb-6">Traffic Sources</h3>
           <div className="h-[250px] w-full relative">
             <ResponsiveContainer width="100%" height="100%">
@@ -45,14 +45,14 @@ export default function TrafficPage() {
                   ))}
                 </Pie>
                 <RechartsTooltip 
-                  contentStyle={{ backgroundColor: "#0F172A", borderColor: "rgba(255,255,255,0.1)", borderRadius: "8px" }}
-                  itemStyle={{ color: "#fff" }}
+                  contentStyle={{ backgroundColor: "#ffffff", borderColor: "#e2e8f0", borderRadius: "8px" }}
+                  itemStyle={{ color: "#0f172a" }}
                 />
               </PieChart>
             </ResponsiveContainer>
             <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-              <span className="text-2xl font-bold text-white">100k</span>
-              <span className="text-xs text-slate-400">Sessions</span>
+              <span className="text-2xl font-bold text-slate-900">100k</span>
+              <span className="text-xs text-slate-500">Sessions</span>
             </div>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-4">
@@ -60,8 +60,8 @@ export default function TrafficPage() {
               <div key={source.name} className="flex items-center">
                 <div className="h-3 w-3 rounded-full mr-2" style={{ backgroundColor: source.color }}></div>
                 <div className="flex flex-col">
-                  <span className="text-xs text-slate-400">{source.name}</span>
-                  <span className="text-sm font-semibold text-white">{(source.value / 1000).toFixed(1)}k</span>
+                  <span className="text-xs text-slate-500">{source.name}</span>
+                  <span className="text-sm font-semibold text-slate-900">{(source.value / 1000).toFixed(1)}k</span>
                 </div>
               </div>
             ))}
@@ -69,14 +69,14 @@ export default function TrafficPage() {
         </div>
 
         {/* Landing Page Performance */}
-        <div className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-md xl:col-span-2 overflow-hidden">
-          <div className="p-6 border-b border-white/10 flex justify-between items-center">
+        <div className="rounded-xl border border-slate-200 bg-white shadow-sm  xl:col-span-2 overflow-hidden">
+          <div className="p-6 border-b border-slate-200 flex justify-between items-center">
             <h3 className="font-semibold text-lg">Landing Page Analysis</h3>
             <button className="text-sm text-primary hover:underline">View all pages</button>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm text-slate-300">
-              <thead className="bg-white/5 text-xs uppercase text-slate-400 border-b border-white/10">
+              <thead className="bg-white shadow-sm text-xs uppercase text-slate-500 border-b border-slate-200">
                 <tr>
                   <th className="px-6 py-4 font-medium">Page URL</th>
                   <th className="px-6 py-4 font-medium">Sessions</th>
@@ -87,20 +87,20 @@ export default function TrafficPage() {
               </thead>
               <tbody className="divide-y divide-white/5">
                 {landingPageData.map((page, idx) => (
-                  <tr key={idx} className="hover:bg-white/5 transition-colors">
-                    <td className="px-6 py-4 font-medium text-white flex items-center">
+                  <tr key={idx} className="hover:bg-white shadow-sm transition-colors">
+                    <td className="px-6 py-4 font-medium text-slate-900 flex items-center">
                       <Globe className="mr-2 h-4 w-4 text-slate-500" /> {page.path}
                     </td>
                     <td className="px-6 py-4">{(page.sessions / 1000).toFixed(1)}k</td>
                     <td className="px-6 py-4">
-                      <span className={parseInt(page.bounceRate) > 70 ? "text-red-400 font-bold" : ""}>
+                      <span className={parseInt(page.bounceRate) > 70 ? "text-rose-600 font-bold" : ""}>
                         {page.bounceRate}
                       </span>
                     </td>
                     <td className="px-6 py-4">{page.time}</td>
                     <td className="px-6 py-4">
                       {page.alert ? (
-                        <div className="flex items-center text-xs text-red-400 font-medium bg-red-500/10 px-2 py-1 rounded-full w-fit">
+                        <div className="flex items-center text-xs text-rose-600 font-medium bg-red-500/10 px-2 py-1 rounded-full w-fit">
                           <AlertCircle className="mr-1 h-3 w-3" /> High Bounce
                         </div>
                       ) : (
