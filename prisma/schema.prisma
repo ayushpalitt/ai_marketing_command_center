@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  insights  Insight[]
+}
+
+model Campaign {
+  id            String   @id @default(uuid())
+  campaignName  String
+  channel       String
+  clicks        Int      @default(0)
+  impressions   Int      @default(0)
+  cost          Float    @default(0)
+  revenue       Float    @default(0)
+  conversions   Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model TrafficData {
+  id          String   @id @default(uuid())
+  date        DateTime
+  source      String
+  users       Int      @default(0)
+  sessions    Int      @default(0)
+  bounceRate  Float    @default(0)
+  conversions Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model Insight {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  insightText String
+  priority   String
+  confidence Float
+  createdAt  DateTime @default(now())
+}
+
+model Forecast {
+  id             String   @id @default(uuid())
+  metric         String
+  predictedValue Float
+  date           DateTime
+  createdAt      DateTime @default(now())
+}
+
+model Report {
+  id        String   @id @default(uuid())
+  title     String
+  reportUrl String
+  createdAt DateTime @default(now())
+}
+
+model JourneyEvent {
+  id        String   @id @default(uuid())
+  sessionId String
+  path      String
+  timestamp DateTime @default(now())
+}
+
+model DataQualityIssue {
+  id          String   @id @default(uuid())
+  type        String
+  description String
+  severity    String
+  resolved    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
