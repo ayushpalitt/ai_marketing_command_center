@@ -80,7 +80,7 @@ export default function DashboardPage() {
                 <Tooltip
                   contentStyle={{ backgroundColor: "#ffffff", borderColor: "#e2e8f0", borderRadius: "8px", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)" }}
                   itemStyle={{ color: "#0f172a" }}
-                  formatter={(value: number) => [formatCurrency(value), "Revenue"]}
+                  formatter={(value: any) => [formatCurrency(value), "Revenue"]}
                 />
                 <Area type="monotone" dataKey="revenue" stroke="#2563EB" strokeWidth={2} fillOpacity={1} fill="url(#colorRevenue)" />
               </AreaChart>
@@ -99,7 +99,7 @@ export default function DashboardPage() {
                 <Tooltip
                   contentStyle={{ backgroundColor: "#ffffff", borderColor: "#e2e8f0", borderRadius: "8px", boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)" }}
                   itemStyle={{ color: "#0f172a" }}
-                  formatter={(value: number) => [formatNumber(value), "Sessions"]}
+                  formatter={(value: any) => [formatNumber(value), "Sessions"]}
                 />
                 <Line type="monotone" dataKey="traffic" stroke="#0ea5e9" strokeWidth={2} dot={false} activeDot={{ r: 6 }} />
               </LineChart>
