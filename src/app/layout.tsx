@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+// @ts-ignore - Bypass strict CSS module resolution in Vercel
 import "./globals.css";
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
 
