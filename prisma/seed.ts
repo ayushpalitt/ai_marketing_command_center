@@ -1,4 +1,6 @@
 import { PrismaClient } from '@prisma/client'
+import { parse } from 'csv-parse'
+import https from 'https'
 
 const prisma = new PrismaClient()
 
@@ -37,46 +39,35 @@ async function main() {
   const startDate = new Date();
   startDate.setMonth(startDate.getMonth() - 24); // 24 months ago
 
-  console.log("Generating 5,000+ Campaigns...");
-  const campaignsToInsert = [];
-  for (let i = 0; i < 5000; i++) {
-    const channel = CHANNELS[getRandomInt(0, CHANNELS.length - 1)];
-    const prefix = CAMPAIGN_PREFIXES[getRandomInt(0, CAMPAIGN_PREFIXES.length - 1)];
-    const suffix = CAMPAIGN_SUFFIXES[getRandomInt(0, CAMPAIGN_SUFFIXES.length - 1)];
-    
-    // Inject some anomalies for Data Quality Center
-    const isAnomaly = Math.random() < 0.01; // 1% chance
-    
-    let impressions = getRandomInt(1000, 500000);
-    let clicks = Math.floor(impressions * getRandomFloat(0.01, 0.1)); // 1% to 10% CTR
-    let cost = clicks * getRandomFloat(0.5, 5); // CPC
-    let conversions = Math.floor(clicks * getRandomFloat(0.01, 0.2)); // 1% to 20% CVR
-    let revenue = conversions * getRandomFloat(20, 500); // AOV
+  console.log("Fetching real-world Facebook Ads dataset...");
+  const campaignsToInsert: any[] = [];
+  
+  await new Promise((resolve, reject) => {
+    https.get('https://raw.githubusercontent.com/ychennay/ychennay.github.io/master/KAG_conversion_data.csv', (res) => {
+      res.pipe(parse({ columns: true }))
+        .on('data', (row: any) => {
+          const spend = parseFloat(row.Spent);
+          const impressions = parseInt(row.Impressions);
+          const clicks = parseInt(row.Clicks);
+          const conversions = parseInt(row.Total_Conversion);
+          const revenue = conversions * getRandomFloat(100, 250);
 
-    if (isAnomaly) {
-      if (Math.random() > 0.5) {
-        // High spend, zero conversions anomaly
-        cost = 50000;
-        conversions = 0;
-        revenue = 0;
-      } else {
-        // Missing cost anomaly
-        cost = 0;
-      }
-    }
-
-    campaignsToInsert.push({
-      campaignName: `${prefix} ${channel} ${suffix} ${i}`,
-      channel,
-      impressions,
-      clicks,
-      cost,
-      conversions,
-      revenue,
-      createdAt: getRandomDate(startDate, endDate),
-      updatedAt: endDate
+          campaignsToInsert.push({
+            campaignName: `FB Campaign ${row.xyz_campaign_id} - Ad ${row.ad_id}`,
+            channel: 'Facebook Ads',
+            impressions,
+            clicks,
+            cost: spend,
+            conversions,
+            revenue,
+            createdAt: getRandomDate(startDate, endDate),
+            updatedAt: endDate
+          });
+        })
+        .on('end', resolve)
+        .on('error', reject);
     });
-  }
+  });
 
   // Insert campaigns in batches
   const BATCH_SIZE = 1000;

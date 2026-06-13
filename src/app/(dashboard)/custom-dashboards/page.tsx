@@ -1,5 +1,6 @@
 "use client"
 import { LayoutTemplate, Plus, MoreVertical, LayoutDashboard, LineChart, Megaphone, Users, Search } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 const customDashboards = [
   { id: 1, name: "Executive Summary", description: "High-level KPI overview for C-suite reporting.", icon: LayoutDashboard, color: "text-indigo-400", bg: "bg-indigo-500/10", widgets: 8, lastEdited: "2 hours ago" },
@@ -10,6 +11,8 @@ const customDashboards = [
 ]
 
 export default function CustomDashboardsPage() {
+  const router = useRouter()
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
@@ -20,7 +23,10 @@ export default function CustomDashboardsPage() {
           <p className="text-sm text-slate-400 mt-1">Manage, build, and share your custom analytics views.</p>
         </div>
         <div className="mt-4 flex space-x-3 sm:mt-0">
-          <button className="flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+          <button 
+            className="flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20"
+            onClick={() => router.push('/dashboard')}
+          >
             <Plus className="mr-2 h-4 w-4" /> Create New Dashboard
           </button>
         </div>
@@ -28,7 +34,11 @@ export default function CustomDashboardsPage() {
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {customDashboards.map((dashboard) => (
-          <div key={dashboard.id} className="group rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-md hover:border-primary/50 transition-colors relative overflow-hidden flex flex-col h-full cursor-pointer">
+          <div 
+            key={dashboard.id} 
+            onClick={() => router.push('/dashboard')}
+            className="group rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-md hover:border-primary/50 transition-colors relative overflow-hidden flex flex-col h-full cursor-pointer"
+          >
             <div className="flex items-start justify-between mb-4">
               <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${dashboard.bg}`}>
                 <dashboard.icon className={`h-6 w-6 ${dashboard.color}`} />
@@ -56,7 +66,10 @@ export default function CustomDashboardsPage() {
         ))}
 
         {/* Empty State / Create New Card */}
-        <div className="rounded-xl border border-dashed border-white/20 bg-transparent p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary/50 hover:bg-white/5 transition-colors min-h-[200px]">
+        <div 
+          onClick={() => router.push('/dashboard')}
+          className="rounded-xl border border-dashed border-white/20 bg-transparent p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-primary/50 hover:bg-white/5 transition-colors min-h-[200px]"
+        >
           <div className="h-12 w-12 rounded-full bg-white/5 flex items-center justify-center mb-3 text-slate-400">
             <Plus className="h-6 w-6" />
           </div>

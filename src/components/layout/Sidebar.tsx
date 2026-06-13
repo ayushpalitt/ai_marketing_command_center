@@ -1,11 +1,10 @@
 "use client"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, Megaphone, LineChart, Cpu, SearchCode, FileText, Database, Settings, GitFork, Activity, PieChart, ShieldAlert, LayoutTemplate } from "lucide-react"
+import { LayoutDashboard, Megaphone, LineChart, Cpu, SearchCode, FileText, Database, Settings, GitFork, Activity, PieChart, ShieldAlert } from "lucide-react"
 
 const navItems = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Custom Dashboards", href: "/custom-dashboards", icon: LayoutTemplate },
   { name: "Campaigns", href: "/campaigns", icon: Megaphone },
   { name: "Traffic", href: "/traffic", icon: LineChart },
   { name: "Segmentation", href: "/segmentation", icon: PieChart },
