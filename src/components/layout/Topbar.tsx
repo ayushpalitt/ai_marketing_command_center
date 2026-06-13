@@ -23,7 +23,7 @@ export function Topbar() {
           <Bell className="h-5 w-5" aria-hidden="true" />
         </button>
         <div className="h-8 w-8 rounded-full border border-slate-200 bg-slate-50">
-          <UserButton afterSignOutUrl="/" appearance={{ elements: { avatarBox: "h-8 w-8" } }} />
+          <UserButton appearance={{ elements: { avatarBox: "h-8 w-8" } }} />
         </div>
       </div>
     </div>
