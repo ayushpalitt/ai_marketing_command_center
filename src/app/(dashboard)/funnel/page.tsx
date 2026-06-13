@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { ResponsiveContainer, FunnelChart, Funnel, LabelList, Tooltip } from "recharts"
-import { GitFork, Sparkles, ArrowRight, MousePointerClick, UserPlus, FileText, BadgeDollarSign } from "lucide-react"
+import { GitFork, Sparkles, ArrowRight, MousePointerClick, UserPlus, FileText, BadgeDollarSign, Activity } from "lucide-react"
 
 const funnelData = [
   { value: 100000, name: 'Awareness', fill: '#6366F1' },
