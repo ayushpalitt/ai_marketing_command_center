@@ -128,12 +128,6 @@ npx tsx prisma/seed.ts
 npm run dev
 ```
 
----
-
-## 💼 Why This Matters (For Recruiters/Engineering Managers)
-
-This project is not a typical CRUD application. It was architected to solve specific business problems: **Data Fragmentation** and **Executive Legibility**. By demonstrating the ability to handle large datasets, execute complex SQL aggregations securely on the server, and present that data in a highly polished, B2B-ready interface, it serves as a testament to my readiness for a high-level **Software Engineering or Business Analytics** role.
-
 <br />
 
 <div align="center">
